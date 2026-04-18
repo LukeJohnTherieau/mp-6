@@ -1,9 +1,10 @@
-import Test from "@/components/Test";
+import LoginButton from "@/components/LoginButton";
+
 
 export default function Home() {
   return (
     <div>
-      <Test/>
+      <LoginButton/>
     </div>
-  );
+  )
 }
