@@ -84,8 +84,8 @@ export default function Profile({ session }: { session: Session }) {
           <Info>
             <StyledP>Email: {session.user?.email}</StyledP>
             <StyledP>Name: {session.user?.name}</StyledP>
-            <StyledP>Name: {session.user?.username}</StyledP>
-            <StyledP>Name: {session.user?.id}</StyledP>
+            <StyledP>Username: {session.user?.username}</StyledP>
+            <StyledP>Id: {session.user?.id}</StyledP>
           </Info>
         </Core>
         <StyledButton onClick={() => signOut()}>Sign out</StyledButton>
