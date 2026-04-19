@@ -21,6 +21,20 @@ export const { handlers, auth, signIn, signOut } = NextAuth(
                 }
             )
         ],
-        secret: process.env.NEXTAUTH_SECRET
+        secret: process.env.NEXTAUTH_SECRET,
+        callbacks: {
+            async jwt({ token, user, profile }) {
+                if (user) {
+                    token.username = user.username;
+                }
+                return token;
+            },
+            async session({ session, token }) {
+                if (session.user) {
+                    session.user.username = token.username as string;
+                }
+                return session;
+            },
+        }
     }
 )
