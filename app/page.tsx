@@ -1,10 +1,10 @@
-import LoginButton from "@/components/LoginButton";
+import Main from "@/components/Main";
 
 
 export default function Home() {
   return (
     <div>
-      <LoginButton/>
+      <Main/>
     </div>
   )
 }
