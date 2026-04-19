@@ -23,9 +23,12 @@ export const { handlers, auth, signIn, signOut } = NextAuth(
         ],
         secret: process.env.NEXTAUTH_SECRET,
         callbacks: {
-            async jwt({ token, user }) {
+            async jwt({ token, user, account }) {
                 if (user) {
                     token.username = user.username;
+                }
+                if (account) {
+                    token.provider = account.provider;
                 }
                 return token;
             },
@@ -33,6 +36,7 @@ export const { handlers, auth, signIn, signOut } = NextAuth(
                 if (session.user) {
                     session.user.username = token.username as string;
                     session.user.id = token.sub as string;
+                    session.user.provider = token.provider as string;
                 }
                 return session;
             }
