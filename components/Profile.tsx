@@ -5,10 +5,22 @@ import { Session } from "next-auth"
 import styled from "styled-components";
 
 
+const StyledTitleGroup = styled.div`
+    padding: 3%;
+    text-align: center;
+`;
+
+const StyledTitle = styled.h1`
+    color: black;
+    padding: 1%;
+    font-size: calc(13px + 1.50vw);
+`;
+
 const StyledP = styled.p`
-    color: gray;
+    color: black;
     padding: 0.5%;
     font-size: calc(8px + 0.75vw);
+    font-weight: bold;
 `;
 
 const StyledDiv = styled.div`
@@ -17,10 +29,9 @@ const StyledDiv = styled.div`
     display: flex;
     flex-direction: column;
     background-color: white;
-    padding: 1%;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.1);
+    padding: 1.5%;
+    border-radius: 6px;
+    box-shadow: 0 14px 14px -4px rgba(0, 0, 0, 0.1);
     @media  screen and (max-width: 1000px) {
         width: 90%;
     }        
@@ -37,7 +48,6 @@ const Core = styled.div`
 const Info = styled.div`
     display: flex;
     flex-direction: column
- 
 `;
 
 const StyledButton = styled.button`
@@ -45,25 +55,17 @@ const StyledButton = styled.button`
     width: 100%;
     background-color: #010409;
     color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 1%;
+    border-radius: 11px;
     cursor: pointer;
     font-weight: bold;
-    font-size: calc(4px + 1vw);
+    font-size: calc(5px + 1vw);
 `;
 
 const ProfilePicture = styled(Image)`
     border-radius: 50%; 
     object-fit: cover;
-    margin: 5px;
-    @media  screen and (max-width: 1000px) {
-        width: 150px;       
-        height: 150px;      
-        border-radius: 50%; 
-        object-fit: cover;
-        margin: 5px;
-    }
+    margin: 5%;
 `;
 
 
@@ -71,6 +73,9 @@ export default function Profile({ session }: { session: Session }) {
   if (session) {
     return (
       <StyledDiv>
+        <StyledTitleGroup>
+          <StyledTitle>My {session.user?.provider === "github" ? "GitHub" : session.user?.provider} Information</StyledTitle>
+        </StyledTitleGroup>
         <Core>
           {session?.user?.image ? (
             <ProfilePicture
@@ -82,11 +87,10 @@ export default function Profile({ session }: { session: Session }) {
             />
           ) : null}
           <Info>
-            <StyledP>Email: {session.user?.email}</StyledP>
-            <StyledP>Name: {session.user?.name}</StyledP>
-            <StyledP>Username: {session.user?.username}</StyledP>
-            <StyledP>Id: {session.user?.id}</StyledP>
-            <StyledP>Provider: {session.user?.provider}</StyledP>
+            <StyledP>{session.user?.name} </StyledP>     
+            <StyledP>{session.user?.username}</StyledP>
+            <StyledP>{session.user?.email}</StyledP>  
+            <StyledP>My Provider is {session.user?.provider === "github" ? "GitHub" : session.user?.provider}</StyledP>
           </Info>
         </Core>
         <StyledButton onClick={() => signOut()}>Sign out</StyledButton>

@@ -9,24 +9,23 @@ const StyledDiv = styled.div`
     display: flex;
     flex-direction: column;
     background-color: white;
-    padding: 1%;
-    border-radius: 10px;
-    border: 1px solid #ccc;
-    box-shadow: 0 15px 15px -5px rgba(0, 0, 0, 0.1);
+    padding: 1.5%;
+    border-radius: 6px;
+    box-shadow: 0 14px 14px -4px rgba(0, 0, 0, 0.1);
     @media  screen and (max-width: 1000px) {
         width: 90%;
     }        
 `;
 
 const StyledTitleGroup = styled.div`
-    padding: 2%;
+    padding: 3%;
     text-align: center;
 `;
 
 const StyledTitle = styled.h1`
     color: black;
-    padding: 0.5%;
-    font-size: calc(12px + 1.75vw);
+    padding: 1%;
+    font-size: calc(13px + 1.50vw);
 `;
 
 const StyledP = styled.p`
@@ -40,12 +39,11 @@ const StyledButton = styled.button`
     width: 100%;
     background-color: #010409;
     color: white;
-    border: none;
-    padding: 10px;
-    border-radius: 10px;
+    padding: 3%;
+    border-radius: 11px;
     cursor: pointer;
     font-weight: bold;
-    font-size: calc(4px + 1vw);
+    font-size: calc(5px + 1vw);
 `;
 
 
